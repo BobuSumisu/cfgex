@@ -9,28 +9,28 @@ Bozok is a RAT written in Delphi.
 In the config loading function, Bozok first sets the version string, then tries to load a `RT_RCDATA` resource called `"CFG"`.
 Since these strings (`"CFG"` and the version string) are hard coded and follow each other, they can be found adjacent in the code segment:
 
-  00402698  5A C3 00 00 43 46 47 00  31 00 2E 00 30 00 00 00  Z+..CFG.1...0...
+    00402698  5A C3 00 00 43 46 47 00  31 00 2E 00 30 00 00 00  Z+..CFG.1...0...
   
 Thus the version can be found by searching for the string `"CFG"` followed by a (unicode) version string:
 
-  b'CFG\x00((?:[0-9]\x00(?:\.\x00)?)+)\x00\00'
+    b'CFG\x00((?:[0-9]\x00(?:\.\x00)?)+)\x00\00'
 
 Of 382 Bozok samples I found the following version distribution:
 
-  {
-    "1.0a": 26,
-    "1.0b": 76,
-    "1.1": 52,
-    "1.2": 5,
-    "1.2.1": 3,
-    "1.3": 51,
-    "1.3.1": 23,
-    "1.4": 10,
-    "1.4.1": 17,
-    "1.4.3": 55,
-    "1.5": 61,
-    "1.5.1": 40
-  }
+    {
+      "1.0a": 26,
+      "1.0b": 76,
+      "1.1": 52,
+      "1.2": 5,
+      "1.2.1": 3,
+      "1.3": 51,
+      "1.3.1": 23,
+      "1.4": 10,
+      "1.4.1": 17,
+      "1.4.3": 55,
+      "1.5": 61,
+      "1.5.1": 40
+    }
   
 ## The config data
 
